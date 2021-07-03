@@ -29,6 +29,7 @@ CBUUID *redBearLabsServiceUUID;
 CBUUID *adafruitServiceUUID;
 CBUUID *lairdServiceUUID;
 CBUUID *blueGigaServiceUUID;
+CBUUID *printersServiceUUID;
 CBUUID *hm10ServiceUUID;
 CBUUID *hc02ServiceUUID;
 CBUUID *hc02AdvUUID;
@@ -215,6 +216,7 @@ CBUUID *writeCharacteristicUUID;
     adafruitServiceUUID = [CBUUID UUIDWithString:@ADAFRUIT_SERVICE_UUID];
     lairdServiceUUID = [CBUUID UUIDWithString:@LAIRD_SERVICE_UUID];
     blueGigaServiceUUID = [CBUUID UUIDWithString:@BLUEGIGA_SERVICE_UUID];
+    printersServiceUUID = [CBUUID UUIDWithString:@PRINT_SERVICE_UUID];
     hm10ServiceUUID = [CBUUID UUIDWithString:@HM10_SERVICE_UUID];
     hc02ServiceUUID = [CBUUID UUIDWithString:@HC02_SERVICE_UUID];
     hc02AdvUUID = [CBUUID UUIDWithString:@HC02_ADV_UUID];
@@ -555,8 +557,14 @@ static bool done = false;
                 serialServiceUUID = blueGigaServiceUUID;
                 readCharacteristicUUID = [CBUUID UUIDWithString:@BLUEGIGA_CHAR_TX_UUID];
                 writeCharacteristicUUID = [CBUUID UUIDWithString:@BLUEGIGA_CHAR_RX_UUID];
+                break; 
+            } else if ([service.UUID isEqual:printersServiceUUID]) {
+                NSLog(@"Printer Bluetooth");
+                serialServiceUUID = printersServiceUUID;
+                readCharacteristicUUID = [CBUUID UUIDWithString:@PRINT_CHAR_TX_UUID];
+                writeCharacteristicUUID = [CBUUID UUIDWithString:@PRINT_CHAR_RX_UUID];
                 break;
-            } else if ([service.UUID isEqual:hm10ServiceUUID]) {
+            }else if ([service.UUID isEqual:hm10ServiceUUID]) {
                 NSLog(@"HM-10 Bluetooth");
                 serialServiceUUID = hm10ServiceUUID;
                 readCharacteristicUUID = [CBUUID UUIDWithString:@HM10_CHAR_TX_UUID];
