@@ -33,6 +33,7 @@ CBUUID *printersServiceUUID;
 CBUUID *hm10ServiceUUID;
 CBUUID *hc02ServiceUUID;
 CBUUID *hc02AdvUUID;
+CBUUID *printAdvUUID;
 CBUUID *serialServiceUUID;
 CBUUID *readCharacteristicUUID;
 CBUUID *writeCharacteristicUUID;
@@ -220,8 +221,9 @@ CBUUID *writeCharacteristicUUID;
     hm10ServiceUUID = [CBUUID UUIDWithString:@HM10_SERVICE_UUID];
     hc02ServiceUUID = [CBUUID UUIDWithString:@HC02_SERVICE_UUID];
     hc02AdvUUID = [CBUUID UUIDWithString:@HC02_ADV_UUID];
-    NSArray *services = @[redBearLabsServiceUUID, adafruitServiceUUID, lairdServiceUUID, blueGigaServiceUUID, printersServiceUUID, hm10ServiceUUID, 
-                        hc02AdvUUID];
+    printAdvUUID = [CBUUID UUIDWithString:@PRINT_ADV_UUID];
+    NSArray *services = @[redBearLabsServiceUUID, adafruitServiceUUID, lairdServiceUUID, blueGigaServiceUUID, hm10ServiceUUID, 
+                        hc02AdvUUID, printAdvUUID];
     [self.CM scanForPeripheralsWithServices:services options: nil];
 #else
     [self.CM scanForPeripheralsWithServices:nil options:nil]; // Start scanning
